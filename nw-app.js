@@ -25,7 +25,7 @@ class NWApp extends App{
 			console.log('ControllerModule - init()'.bold);
 			nw.Window.open('modules/controller/controller.html', {
 				//new_instance: true,
-				id: 'kdx',
+				id: 'htndx',
 				title: 'KaspaDX',
 				width: 1027,
 				height: 768,
@@ -33,7 +33,7 @@ class NWApp extends App{
 				frame: false,
 				transparent: false,
 				show: true,
-				icon: 'resources/images/kdx-icon.png'
+				icon: 'resources/images/htndx-icon.png'
 				// http://docs.nwjs.io/en/latest/References/Manifest%20Format/#window-subfields
 			}, (win) => {
 				console.log("win", win)
@@ -46,7 +46,7 @@ class NWApp extends App{
 	* initlizing data folder error handler
 	*/
 	dataDirInitError(){
-		console.error(`Please start app with --init=/path/to/data/dir or --init for default (~/.kdx/data)`.red);
+		console.error(`Please start app with --init=/path/to/data/dir or --init for default (~/.htndx/data)`.red);
 		nw.Window.open('modules/initialize/initialize.html', {
 			//new_instance: true,
 			id: 'initialize',
@@ -57,7 +57,7 @@ class NWApp extends App{
 			frame: true,
 			transparent: false,
 			show: true,
-			icon: 'resources/images/kdx-icon.png'
+			icon: 'resources/images/htndx-icon.png'
 			// http://docs.nwjs.io/en/latest/References/Manifest%20Format/#window-subfields
 		}, (win) => {
 

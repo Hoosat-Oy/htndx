@@ -18,7 +18,7 @@ class NodeApp extends App{
 			try {
 				console.log('purging'.brightMagenta,this.dataFolder.brightWhite);
 				await fse.remove(this.dataFolder);
-				await fse.remove(path.join(os.homedir(),'.kdx'));
+				await fse.remove(path.join(os.homedir(),'.htndx'));
 				console.log('done'.brightGreen);
 				process.exit(0);
 			} catch(err) {
@@ -41,7 +41,7 @@ class NodeApp extends App{
 	* initlizing data folder error handler
 	*/
 	dataDirInitError(){
-		console.error(`Please start app with --init=/path/to/data/dir or --init for default (~/.kdx/data)`.red);
+		console.error(`Please start app with --init=/path/to/data/dir or --init for default (~/.htndx/data)`.red);
 		this.exit();
 	}
 

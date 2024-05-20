@@ -1,11 +1,11 @@
 {
-  "name": "kdx",
+  "name": "htndx",
   "description": "Kaspa Desktop eXperience",
   "version": "2.12.10",
   "private": true,
-  "main": "kdx.js",
+  "main": "htndx.js",
   "files": [
-    "kdx.js",
+    "htndx.js",
     "pty.js",
     "rpc.js",
     "node-app.js",

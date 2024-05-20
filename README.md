@@ -1,19 +1,19 @@
-# KDX
+# HTNDX
 
-KDX is a dedicated desktop process manager for [Kaspa node](https://github.com/kaspanet/kaspad).
-
-
-KDX offers a miniature console using which user can re-build the Kaspa stack, upgrading Kaspa to the latest version directly from GitHub. The build process is automated via a series of scripts that, if
-needed, fetch required tools (git, go, gcc) and build Kaspa on the host computer (the build includes various Kaspa utilities including `txgen`, `wallet`, `kaspactl` and others and can be executed against any specific Git branch).  KDX console can also be used to migrate Kasparov database if building a version with an updated database schema.
-
-KDX process configuration (available via a simple JSON editor) allows user to specify command-line arguments for executables, as such it is possible to configure KDX to run multiple instances of Kaspa or potentially run multiple networks simultaneously (provided Kaspa nodes do not pro-actively auto-discover each-other)
-
-Like many desktop applications, KDX can run in the tray bar, out of the way.
-
-KDX is built using [NWJS](https://nwjs.io) and is compatible Windows, Linux and Mac OS X.
+HTNDX is a dedicated desktop process manager for [Hoosat Network node](https://github.com/Hoosat-Oy/HTND).
 
 
-## Building KDX
+HTNDX offers a miniature console using which user can re-build the Hoosat Network stack, upgrading Hoosat Network to the latest version directly from GitHub. The build process is automated via a series of scripts that, if
+needed, fetch required tools (git, go, gcc) and build Hoosat Network on the host computer (the build includes various Hoosat Network utilities including, `htnwallet`, `htnctl` and others and can be executed against any specific Git branch).  HTNDX console can also be used to migrate Hoosat Network database if building a version with an updated database schema.
+
+HTNDX process configuration (available via a simple JSON editor) allows user to specify command-line arguments for executables, as such it is possible to configure HTNDX to run multiple instances of Hoosat Network or potentially run multiple networks simultaneously (provided Hoosat Network nodes do not pro-actively auto-discover each-other)
+
+Like many desktop applications, HTNDX can run in the tray bar, out of the way.
+
+HTNDX is built using [NWJS](https://nwjs.io) and is compatible Windows, Linux and Mac OS X.
+
+
+## Building HTNDX
 
 ### Pre-requisites
 
@@ -22,14 +22,14 @@ KDX is built using [NWJS](https://nwjs.io) and is compatible Windows, Linux and 
 - Rust (latest, used for building kaspa miner at https://github.com/aspectron/kaspa-miner)
 - Cuda linraries for kaspa miner (depends on the platform)
 
-**NOTE:** KDX build process builds and includes latest Kaspa binaries from Git master branches. 
+**NOTE:** HTNDX build process builds and includes latest Hoosat Network binaries from Git master branches. 
 To build from specific branches, you can use `--branch...` flags (see below).
 
-#### Generating KDX installers
+#### Generating HTNDX installers
 ```
 npm install emanator@latest
-git clone git@github.com:aspectron/kdx
-cd kdx
+git clone git@github.com:Hoosat-Oy/htndx
+cd htndx
 # run emanate with one or multiple flags below
 #  --portable   create a portable zipped application
 #  --innosetup  generate Windows setup executable
@@ -60,7 +60,7 @@ emanate --innosetup
 
 Emanator stores build files in the `~/emanator` folder
 
-#### Running KDX from development environment
+#### Running HTNDX from development environment
 
 
 In addition to Node.js, please download and install [Latest NWJS SDK https://nwjs.io](https://nwjs.io/) - make sure that `nw` executable is available in the system PATH and that you can run `nw` from command line.
@@ -89,19 +89,19 @@ export PATH = /home/<user>/bin/node/bin:/home/<user>/bin/nwjs:$PATH
 ```
 The above method allows you to deploy latest binaries and manage versions by re-targeting symlinks pointing to target folders.
 
-Once you have node and nwjs working, you can continue with KDX.
+Once you have node and nwjs working, you can continue with HTNDX.
 
-KDX installation:
+HTNDX installation:
 ```
 npm install emanator@latest
-git clone git@github.com:aspectron/kdx
-cd kdx
+git clone git@github.com:Hoosat-Oy/htndx
+cd htndx
 npm install
 emanate --local-binaries
 nw .
 ```
 
-#### Building installers from specific Kaspa Git branches
+#### Building installers from specific Hoosat Network Git branches
 
 `--branch` argument specifies common branch name for kaspa and kasparov, for example:
 ```
@@ -109,41 +109,41 @@ emanate --branch=v0.4.0-dev
 ```
 The branch for each repository can be overriden using `--branch-<repo-name>=<branch-name>` arguments as follows:
 ```
-emanate --branch=v0.4.0-dev --branch-kaspad=v0.3.0-dev
+emanate --branch=v0.4.0-dev --branch-htnd=v0.3.0-dev
 emanate --branch-miningsimulator=v0.1.2-dev
 ```
 
-**NOTE:** KDX `build` command in KDX console operates in the same manner and accepts `--branch...` arguments.
+**NOTE:** HTNDX `build` command in HTNDX console operates in the same manner and accepts `--branch...` arguments.
 
 
-## KDX Process Manager
+## HTNDX Process Manager
 
 ### Configuration
 
-KDX runtime configuration is declared using a JSON object.  
+HTNDX runtime configuration is declared using a JSON object.  
 
-Each instance of the process is declared using it's **type** (for example: `kaspad`) and a unique **identifier** (`kd0`).  Most process configuration objects support `args` property that allows
-passing arguments or configuration options directly to the process executable.  Depending on the process type, the configuration is passed via command line arguments (kasparov*) or configuration file (kaspad).
+Each instance of the process is declared using it's **type** (for example: `htnd`) and a unique **identifier** (`kd0`).  Most process configuration objects support `args` property that allows
+passing arguments or configuration options directly to the process executable.  Depending on the process type, the configuration is passed via command line arguments (kasparov*) or configuration file (htnd).
 
 Supported process types:
-- `kaspad` - Kaspa full node
-- `kaspaminer` - Kaspa sha256 miner
+- `htnd` - Hoosat Network full node
+- `htnminer` - Hoosat Network sha256 miner
 
-**NOTE:** For Kaspa, to specify multiple connection endpoints, you must use an array of addresses as follows: ` "args" : { "connect" : [ "peer-addr-port-a", "peer-addr-port-b", ...] }`
+**NOTE:** For Hoosat Network, to specify multiple connection endpoints, you must use an array of addresses as follows: ` "args" : { "connect" : [ "peer-addr-port-a", "peer-addr-port-b", ...] }`
 
 #### Default Configuration File
 ```js
 {
-	"kaspad:kd0": {
+	"htnd:kd0": {
 		"args": {
-			"rpclisten": "0.0.0.0:16210",
+			"rpclisten": "0.0.0.0:42420",
 			"listen": "0.0.0.0:16211",
 			"profile": 7000,
 			"rpcuser": "user",
 			"rpcpass": "pass"
 		}
 	},
-	"kaspad:kd1": {
+	"htnd:kd1": {
 		"args": {
 			"rpclisten": "0.0.0.0:16310",
 			"listen": "0.0.0.0:16311",
@@ -184,24 +184,24 @@ Supported process types:
 
 ### Data Storage
 
-KDX stores it's configuration file as `~/.kdx/config.json`.  Each configured process data is stored in `<datadir>/<process-type>-<process-identifier>` where `datadir` is a user-configurable location.  The default `datadir` location is `~/.kdx/data/`.  For example, `kaspad` process with identifier `kd0` will be stored in `~/.kdx/data/kaspad-kd0/` and it's logs in `~/.kdx/data/kaspad-kd0/logs/kaspad.log`
+HTNDX stores it's configuration file as `~/.htndx/config.json`.  Each configured process data is stored in `<datadir>/<process-type>-<process-identifier>` where `datadir` is a user-configurable location.  The default `datadir` location is `~/.htndx/data/`.  For example, `htnd` process with identifier `kd0` will be stored in `~/.htndx/data/htnd-kd0/` and it's logs in `~/.htndx/data/htnd-kd0/logs/htnd.log`
 
-### Kaspa Binaries
+### Hoosat Network Binaries
 
-KDX can run Kaspa from 2 locations - an integrated `bin` folder that is included with KDX redistributables and `~/.kdx/bin` folder that is created during the Kaspa build process. 
+HTNDX can run Hoosat Network from 2 locations - an integrated `bin` folder that is included with HTNDX redistributables and `~/.htndx/bin` folder that is created during the Hoosat Network build process. 
 
-## KDX Console
+## HTNDX Console
 
-KDX Console provides following functionality:
+HTNDX Console provides following functionality:
 - Upgrading kasparov using `migrate` command
 - `start` and `stop` controls stack runtime
-- Kaspad RPC command execution
-- Use of test wallet app (KDX auto-configures kasparov address)
-- Rebuilding Kaspa software stack from within the console
+- Hoosat Networkd RPC command execution
+- Use of test wallet app (HTNDX auto-configures kasparov address)
+- Rebuilding Hoosat Network software stack from within the console
 
-### Using Kaspad RPC
+### Using Hoosat Networkd RPC
 
-Kaspad RPC can be accessed via KDX Console using the process identifier. For example:
+Hoosat Networkd RPC can be accessed via HTNDX Console using the process identifier. For example:
 ```
 $ kd0 help
 $ kd0 getinfo

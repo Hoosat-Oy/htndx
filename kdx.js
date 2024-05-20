@@ -10,5 +10,5 @@ else
 */
 const app = new App({
 	appFolder: __dirname,
-	ident: 'kdx'
+	ident: 'htndx'
 });

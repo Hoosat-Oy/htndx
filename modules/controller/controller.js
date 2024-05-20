@@ -295,7 +295,7 @@ class KDXApp extends FlowApp{
 				_hideQRScanner hideopenwalletlogo></kaspa-wallet>
 		</tab-content>
 		<tab-content for="console" data-active-display="flex" class="vertical-flex term">
-			<flow-terminal id="kdx-console" class="x-terminal" background="#000" foreground="#FFF"></flow-terminal>
+			<flow-terminal id="htndx-console" class="x-terminal" background="#000" foreground="#FFF"></flow-terminal>
 		</tab-content>
 		<app-startup-dialog id="release-notes-dialog"></app-startup-dialog>`
 	}
@@ -378,7 +378,7 @@ class KDXApp extends FlowApp{
 		document.body.classList.toggle("disable", disabled);
 	}
 	initRPC(){
-		let rpc = new FlowRPC({bcastChannel:'kdx'});
+		let rpc = new FlowRPC({bcastChannel:'htndx'});
 		this.rpc = rpc;
 
 		rpc.on("disable-ui", (args)=>{
@@ -602,7 +602,7 @@ class KDXApp extends FlowApp{
 		return { network, port };
 	}
 	async initConsole() {
-		let terminal = this.qS('#kdx-console');
+		let terminal = this.qS('#htndx-console');
 		this.console = new Console(this, terminal);
 
 		return Promise.resolve();
@@ -1015,7 +1015,7 @@ class KDXApp extends FlowApp{
 		if(statsdAddressInput)
 			this.statsdAddress = statsdAddressInput.value = config.statsdAddress || "";
 		if(statsdPrefixInput)
-			this.statsdPrefix = statsdPrefixInput.value = config.statsdPrefix || "kdx.$HOSTNAME";
+			this.statsdPrefix = statsdPrefixInput.value = config.statsdPrefix || "htndx.$HOSTNAME";
 		this.runInBG = runInBGInput.checked;
 		this.enableMining = enableMiningInput?.checked||!!config.enableMining;
 		this.buildType = config.build || 'generic';
@@ -1139,7 +1139,7 @@ Useful resources:
 - Kaspa Documentation: https://github.com/kaspanet/docs 
 - Kaspa Discord: https://discord.gg/vMT39xB
 - Kaspa GitHub: https://github.com/kaspanet/
-- KDX GitHub: https://github.com/aspectron/kdx
+- KDX GitHub: https://github.com/aspectron/htndx
 
 ${changelogContent}`;
 		$("#release-notes-link").on("click", ()=>{
@@ -1547,7 +1547,7 @@ ${changelogContent}`;
 				name:pkg.name,
 				description:pkg.description,
 				folder:app.folder
-			}, pkg.kdx||{})
+			}, pkg.htndx||{})
 
 			return this.resolveStrings(config);
 		})
@@ -1573,7 +1573,7 @@ ${changelogContent}`;
 				return;
 
 			let location = app.location;
-			if(!location && app.engines?.kdx) {
+			if(!location && app.engines?.htndx) {
 				location = `apps/${app.folder}/${app.main}`;
 			}
 
@@ -1593,7 +1593,7 @@ ${changelogContent}`;
 					title="${app.name}"
 					width="${width}"
 					height="${height}"
-					icon="resources/images/kdx-icon.png"
+					icon="resources/images/htndx-icon.png"
 					resizable
 					frame
 					>${`${app.name} - ${app.description}`}</flow-window-link><br/>
@@ -1666,7 +1666,7 @@ ${changelogContent}`;
 		this.updateChecked = true;
 
 		//const url = 'http://localhost:9090/version.json';
-		const url = 'https://kdx.app/version.json';
+		const url = 'https://htndx.app/version.json';
 		let resp = await fetch(url).catch((error) => {
 			alert(error.toString());
 		});
@@ -1675,7 +1675,7 @@ ${changelogContent}`;
 		});
 
 		if(!data) {
-			console.log("missing version data in https://kdx.app/version.json");
+			console.log("missing version data in https://htndx.app/version.json");
 			return false;
 		}
 
@@ -1706,11 +1706,11 @@ ${changelogContent}`;
 			});
 
 			if(btn == 'ok') {
-				require('nw.gui').Shell.openExternal('https://kdx.app');
+				require('nw.gui').Shell.openExternal('https://htndx.app');
 
 				let confirm = await FlowDialog.show({
 					title:i18n.t("KDX Update"),
-					body:html`Please download the latest version from  <flow-link href="https://kdx.app" target="_blank">https://kdx.app</flow-link>
+					body:html`Please download the latest version from  <flow-link href="https://htndx.app" target="_blank">https://htndx.app</flow-link>
 					<br/>&nbsp;<br/>
 					KDX will now shutdown`,
 					btns:[{
@@ -1734,7 +1734,7 @@ ${changelogContent}`;
 	}
 }
 
-KDXApp.define("kdx-app")
+KDXApp.define("htndx-app")
 
 nw.Window.get().on('new-win-policy', function(frame, url, policy) {
 	// do not open the window

@@ -46,9 +46,9 @@ This release of KDX includes Kaspa build `v0.12.11`
 
 ## [2.12.0] - 2022-11-25
 This release of KDX includes Kaspa build `v0.12.10`
-- Support for wallet UI lock [issue#28](https://github.com/aspectron/kdx/issues/28)
-- Transactions export as CSV [issue#19](https://github.com/aspectron/kdx/issues/19)
-- Updated Kaspa logo and OSX icon [issue#21](https://github.com/aspectron/kdx/issues/21)
+- Support for wallet UI lock [issue#28](https://github.com/aspectron/htndx/issues/28)
+- Transactions export as CSV [issue#19](https://github.com/aspectron/htndx/issues/19)
+- Updated Kaspa logo and OSX icon [issue#21](https://github.com/aspectron/htndx/issues/21)
 - Transactions addresses are now links to https://explorer.kaspa.org
 - Transaction can now be updated using the archival node API at https://api.kaspa.org
 
@@ -241,7 +241,7 @@ This is a minor release and includes the following changes:
 
 ## [2.0.0] - 2021-01-27
 This release updates KDX compatibility with kaspad `v0.8.6-dev` branch.
-After upgrading you must reset your data folders with `node kdx --purge`.
+After upgrading you must reset your data folders with `node htndx --purge`.
 
 As of this release, KDX has been adapted to be a wallet-centric application based on top of Kaspa's Wallet Framework subsystem.
 
@@ -252,13 +252,13 @@ As of this release, KDX has been adapted to be a wallet-centric application base
 
 ## [1.4.0] - 2020-09-24
 ** WORK IN PROGRESS - INTERNAL POC RELEASE **
-This version updates KDX to be compatible with kaspad `v0.8.1-dev` branch (as of 2020-11-26 feature/karpov-rebase-3 branch). Before running you must reset your data folders with `node kdx --purge`.
+This version updates KDX to be compatible with kaspad `v0.8.1-dev` branch (as of 2020-11-26 feature/karpov-rebase-3 branch). Before running you must reset your data folders with `node htndx --purge`.
 - Removed 3rd-party service dependence (PostgreSQL and MQTT) from the project build.
 - Integrated Karpov Wallet interface directly into KDX
 - Integrated basic wallet functionality (creation, recovery etc)
 
 ## [1.2.0] - 2020-09-24
-This version updates KDX to be compatible with kaspad `v0.7.2-dev` branch. Before running you must reset your data folders with `node kdx --purge`.
+This version updates KDX to be compatible with kaspad `v0.7.2-dev` branch. Before running you must reset your data folders with `node htndx --purge`.
 
 - Created gRPC interface for connection with Kaspad 
 - Disabled Websocket JSON RPC support
@@ -267,7 +267,7 @@ This version updates KDX to be compatible with kaspad `v0.7.2-dev` branch. Befor
 - Moved default MQTT port to 19792
 
 ## [1.1.0] - 2020-08-19
-This version updates KDX to be compatible with kaspad `v0.6.5-dev` branch. Before running you must reset your data folders with `node kdx --purge`.
+This version updates KDX to be compatible with kaspad `v0.6.5-dev` branch. Before running you must reset your data folders with `node htndx --purge`.
 
 - Compatibility with the latest Emanator integration API (please update Emanator `npm install -g emanator@latest`)
 - Migrated `--miningaddr` from Kaspad to Kaspaminer

@@ -11,7 +11,7 @@ Alternatively applets can be configured to run from a custom location via config
 ## Configuration Settings
 
 The following applet configuration settings can should be created inside of KDX module
-configuration settings (located in the *Settings tab*) or can be placed inside the `"kdx"`
+configuration settings (located in the *Settings tab*) or can be placed inside the `"htndx"`
 property of `packaje.json` manifest file if located within the apps folder:
 
 ```json
@@ -24,7 +24,7 @@ property of `packaje.json` manifest file if located within the apps folder:
     "args": [
       "node",
       "dagviz",
-      "--kdx",
+      "--htndx",
       "--no-auth",
       "--port=8689",
       "--kasparov=http://localhost:$KASPAROVD-PORT",
@@ -39,7 +39,7 @@ The following is a `package.json` sample file:
 {
     "name" : "my-app",
     "version" : "1.2.3",
-    "kdx" : { 
+    "htndx" : { 
         "name" : "My App",
         "location" : "http://dagviz.com"
     }

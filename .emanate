@@ -1,19 +1,19 @@
 "use strict";
 //sudo emanate --miner --miner-debug
 
-//const KASPA_DEFAULT_BRANCH = 'v0.11.7-dev'; //'master';
-const KASPA_DEFAULT_BRANCH = 'master';
+//const HTN_DEFAULT_BRANCH = 'v0.11.7-dev'; //'master';
+const HTN_DEFAULT_BRANCH = 'master';
 const MINER_DEFAULT_BRANCH = 'main';
 
 const E = new Emanator(__dirname, {
     type : argv.includes('build') || flags.innosetup ? 'NODE+NWJS' : 'UTIL',
     guid : 'c1072045-6d98-44d8-9aa5-e9be6c79bd01',
     group : 'Kaspa',
-    ident : 'kdx',
+    ident : 'htndx',
     suffix : flags.full ? '-dev' : '',
     title : 'KDX',
     banner : 'KDX',
-    git : 'git@github.com:aspectron/kdx',
+    git : 'git@github.com:Hoosat-Oy/htndx',
     author : "ASPECTRON Inc.",
     url : "http://aspectron.com",
     //archive : true,
@@ -76,14 +76,14 @@ const kaspad = E.task('kaspad', ['origin'], async () => {
     if((E.flags.reset || E.flags.clean) && fs.existsSync(dest))
         await E.emptyDir(dest);
 
-    const branch = E.flags['branch'] || KASPA_DEFAULT_BRANCH || 'master';
+    const branch = E.flags['branch'] || HTN_DEFAULT_BRANCH || 'master';
     
     console.log('branch:',branch);
     
     //const repos = { };
     const repos = [`kaspad:${branch}`];
     if(E.flags['with-extras']) {
-        repos.push(`txgen:${branch}`,`kasparov:${KASPA_DEFAULT_BRANCH}`);
+        repos.push(`txgen:${branch}`,`kasparov:${HTN_DEFAULT_BRANCH}`);
     }
 
     console.log("REPOS:".brightMagenta,repos);
@@ -252,10 +252,10 @@ E.flags.docker && E.task('docker', null, async () => {
 
     const relay = ['no-cache'];
     const args = ['-s','docker','build'].concat(relay.map(k=>E.flags[k]?`--${k}`:null)).filter(v=>v);
-    args.push('-t',`kdx:latest`,'.');
+    args.push('-t',`htndx:latest`,'.');
     const ts0 = Date.now();
     await E.utils.spawn('sudo', args, { cwd : __dirname, stdio: 'inherit' });
-    await E.utils.spawn('sudo',['docker','tag','kdx:latest',`kdx:${E.manifest.version}`], { cwd : __dirname, stdio: 'inherit' });
+    await E.utils.spawn('sudo',['docker','tag','htndx:latest',`htndx:${E.manifest.version}`], { cwd : __dirname, stdio: 'inherit' });
     console.log('Docker build complete at',new Date());
     const ts1 = Date.now();
     console.log('Docker build took'.brightBlue,`${((ts1-ts0)/1000/60).toFixed(1)}`.brightWhite,'minutes'.brightBlue)

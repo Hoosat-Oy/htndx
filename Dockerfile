@@ -15,17 +15,17 @@ RUN apk add --no-cache python gcc make g++ build-base git lzo bzip2 openssl bash
 #RUN cd /usr/src/dagviz/k-explorer && npm install && npm link
 #RUN npm link k-explorer
 
-RUN addgroup -S kdx && adduser -S kdx -G kdx
+RUN addgroup -S htndx && adduser -S htndx -G htndx
 RUN mkdir -p /run/postgresql
-RUN chown kdx:kdx /run/postgresql
+RUN chown htndx:htndx /run/postgresql
 
 # Tell docker that all future commands should run as the appuser user
 
-WORKDIR /home/kdx/releases/kdx
+WORKDIR /home/htndx/releases/htndx
 COPY . .
 RUN rm -rf node_modules
 RUN rm package-lock.json
-#RUN chown -R kdx:kdx .
+#RUN chown -R htndx:htndx .
 
 
 RUN npm install
@@ -34,10 +34,10 @@ RUN npm install -g emanator@latest
 RUN emanate --local-binaries --no-ssh
 
 
-USER kdx
+USER htndx
 
 EXPOSE 16210 16211 16310 16311 11224 18792 
 # 18787 
 # (pgsql - may conflict with other instances)
 
-ENTRYPOINT ["node","kdx.js","--init","--nice","--mine"]
+ENTRYPOINT ["node","htndx.js","--init","--nice","--mine"]

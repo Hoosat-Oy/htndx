@@ -11,10 +11,10 @@ const jc = NATS.JSONCodec();
 const log = new FlowLogger('RPC');
 
 const networks = {
-    mainnet: { port: 16110 },
-    testnet: { port: 16210 },
-    simnet: { port: 16510 },
-    devnet: { port: 16610 }
+    mainnet: { port: 42420 },
+    testnet: { port: 42422 },
+    simnet: { port: 42424 },
+    devnet: { port: 42426 }
 };
 
 const program = new Command();

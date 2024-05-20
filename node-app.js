@@ -28,8 +28,8 @@ class NodeApp extends App{
 			return;
 		}
 
-		const KaspaProcessManager = require(path.join(this.appFolder, "lib/manager.js"));
-		this.manager = new KaspaProcessManager(null, this.dataFolder, this.appFolder);
+		const HTNProcessManager = require(path.join(this.appFolder, "lib/manager.js"));
+		this.manager = new HTNProcessManager(null, this.dataFolder, this.appFolder);
 
 		return new Promise((resolve, reject) => {
 			this.initDaemons();
